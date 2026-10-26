@@ -1,8 +1,4 @@
-"""
-Day 1 - API Data Analysis Using Python Structures
-Squad Python Specialization - Data Science, AI & Analytics
-Author: Junior Data Analyst
-"""
+
 from pathlib import Path
 from typing import Any
 import matplotlib.pyplot as plt
@@ -13,7 +9,7 @@ API_URL = "https://jsonplaceholder.typicode.com/users"
 OUTPUT_DIR = Path("output")
 
 
-# --- Task 1: Retrieve customer data ---
+
 def get_customers(url: str = API_URL) -> list[dict]:
     """Fetch the customer list. Report failures clearly instead of crashing."""
     try:
@@ -25,7 +21,7 @@ def get_customers(url: str = API_URL) -> list[dict]:
         return []
 
 
-# --- Task 2: Explore nested dictionaries and lists ---
+
 def explore(record: Any, indent: int = 0) -> None:
     """
     Recursively walk a dictionary or list and print every key/item
@@ -44,7 +40,7 @@ def explore(record: Any, indent: int = 0) -> None:
                 explore(item, indent + 1)
 
 
-# --- Task 3: Extract customer attributes ---
+
 def extract_attributes(customers: list[dict]) -> list[dict]:
     """Return one flat dict per customer with the attributes listed in the task."""
     flattened_customers = []
@@ -76,13 +72,11 @@ def extract_attributes(customers: list[dict]) -> list[dict]:
     return flattened_customers
 
 
-# --- Task 4: Unique cities ---
 def unique_cities(customers: list[dict]) -> set[str]:
     """Return the set of distinct cities."""
     return {c["city"] for c in customers if c.get("city")}
 
 
-# --- Task 5a: Count customers per city ---
 def city_counts(customers: list[dict]) -> dict[str, int]:
     """Count customers per city using a loop and/or a dict comprehension (no Counter, no pandas)."""
     counts: dict[str, int] = {}
@@ -93,7 +87,7 @@ def city_counts(customers: list[dict]) -> dict[str, int]:
     return dict(sorted(counts.items(), key=lambda item: item[1], reverse=True))
 
 
-# --- Task 5b: Count customers per email TLD ---
+
 def email_domain_counts(customers: list[dict]) -> dict[str, int]:
     """Count customers per email top-level domain (e.g. 'biz', 'tv')."""
     tlds = [
@@ -105,13 +99,12 @@ def email_domain_counts(customers: list[dict]) -> dict[str, int]:
     return dict(sorted(counts.items(), key=lambda item: item[1], reverse=True))
 
 
-# --- Task 6: Convert to DataFrame ---
 def to_dataframe(rows: list[dict]) -> pd.DataFrame:
     """Convert the flattened customer dictionary rows into a pandas DataFrame."""
     return pd.DataFrame(rows)
 
 
-# --- Task 7: Export datasets to CSV ---
+
 def export_csv(
     df_customers: pd.DataFrame,
     df_city_counts: pd.DataFrame,
@@ -128,7 +121,6 @@ def export_csv(
     print(f"[+] Exported: {city_counts_path}")
 
 
-# --- Task 8: Visualize distributions ---
 def plot_distribution(
     counts: dict[str, int],
     path: Path,
