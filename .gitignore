@@ -1,0 +1,20 @@
+﻿# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# UV & Package Cache
+.uv/
+
+# OS / Editor Artifacts
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+Desktop.ini
